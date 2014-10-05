@@ -1,0 +1,10 @@
+nenad_test:
+    resource: "@NenadTestBundle/Resources/config/routing.yml"
+    prefix:   /
+
+zephyr_test:
+    resource: "@ZephyrTestBundle/Controller/"
+    type:     annotation
+    prefix:   hello/
+
+

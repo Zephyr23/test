@@ -1,0 +1,167 @@
+body{
+min-width:940px;
+width:100%;
+margin:10px auto;
+font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
+background: url("../../bundles/nenadtest/css/images/background.jpg") fixed;
+background-size: 100%; 
+background-repeat: no-repeat;
+}
+
+.wrapper{
+width:100%;
+}
+
+.header{
+background-color: black;
+height: 82px;
+min-width: 980px;
+color:white;
+}
+
+#ltxt1,#ltxt2{
+float:left;
+font-size: 20px;
+font-weight: normal;
+color: #203360;
+zoom: 1;
+line-height: 1.28;
+text-align: left;
+}
+
+#ltxt2{
+font-size: 15px;
+}
+.lbutton>input{
+float:right;
+color: #333;
+cursor: pointer;
+display: inline-block;
+font-size: 11px;
+font-weight: bold;
+line-height: 13px;
+margin-top: 40px;
+padding: 3px;
+white-space: nowrap;
+text-align: center;
+
+}
+
+.header_l{
+float:left;
+padding:10px;
+}
+.header_l>a{
+font-family: Tahoma;
+font-size: 41px;
+text-decoration:none;
+color:white;
+font-weight:bold;
+}
+
+.header_r{
+float:right;
+
+}
+div,form{display:block;}
+
+.header_r>a{
+color:gray;
+font-size:12px;
+}
+
+table{
+color: #fff;
+font-weight: normal;
+font-size: 11px;
+text-decoration:none;
+border-collapse: separate;
+border-spacing: 0px;
+}
+.txt
+{
+padding:2px;
+}
+
+#txt{
+margin-bottom: 5px;
+margin-top: 10px;
+color: #333;
+font-size: 18px;
+font-weight: normal;
+}
+#innerheader{
+margin: 0 auto;
+padding-top: 13px;
+width: 980px;
+}
+#innerbody{
+clear: both;
+margin: 0 auto;
+width: 980px;
+padding:20px;
+}
+
+.log{
+font-family:"Tahoma";
+font-size:11px;
+padding:3px;
+margin-right:15px;
+width:140px;
+
+}
+.body{
+margin: 0 auto;
+position: relative; 
+display:block;
+}
+
+footer{
+padding:20px;
+color:white;
+text-align:center;
+background-color:black;
+font-family:"Tahoma";
+font-size:15px; 
+font-weight:bold;
+}
+a{
+color:white;
+
+}
+#contact_form{
+margin:0 auto;
+margin-top:80px;
+max-width: 780px;
+}
+.single_form>input{
+padding:3px;
+color:black;
+font-family:"Tahoma";
+font-size:20px;
+margin-bottom:18px;
+height:35px;
+border:1px solid #B0D3F5;
+border-radius:5px;
+}
+.message>textarea{
+height:162px;
+padding:3px;
+color:black;
+font-family:"Tahoma";
+font-size:18px;
+border:1px solid #B0D3F5;
+border-radius:5px;
+}
+.single_form{
+height:200px;
+float:left;
+width:45%;
+}
+.message{
+height:200px;
+width:45%;
+float:right;
+}
+
+

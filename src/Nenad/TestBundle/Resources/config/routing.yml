@@ -1,0 +1,9 @@
+nenad_test_homepage:
+    path:     /homepage
+    defaults: { _controller: NenadTestBundle:Default:index }
+
+nenad_test_email:
+    path:     /homepage/email
+    defaults: { _controller: NenadTestBundle:Default:email }
+
+

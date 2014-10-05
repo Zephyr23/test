@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link href="{{ asset('email.php') }}"/>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+	<link rel="stylesheet" type="text/css" href="{{ asset('bundles/nenadtest/css/layout.css') }}" />
+	 {% stylesheets 'bundles/nenadtest/css/*' filter='cssrewrite' %}
+        <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}" />
+ 	{% endstylesheets %}
+ 
+	{% block javascripts %}{% endblock %}
+	
+    </head>
+    <body>
+	<div class="wrapper">
+	<div class="header">
+	<div id="innerheader">
+		<div class="header_l">
+		<a href="{{ path('nenad_test_homepage') }}">zephyr</a>
+	 	</div>
+		
+		<div class="header_r">
+
+			<form action="" method="post">
+				
+				
+				<table cellspacing="0">
+				<tr >
+					<td class="txt">
+					<label>Username</label>  
+					</td>
+					<td class="txt">
+					<label>Password</label>
+					</td>
+   				</tr>
+				<tr>
+					<td>
+					<input type="text" name="email" class="log">
+					</td>
+					<td>
+					<input  type="password" name="password" class="log">
+					</td>
+					<td>
+					<input type="submit" id="login" value="Log in" name="login">
+					</td>
+				</tr>
+				</table>
+			</form>
+		</div>
+		
+		
+
+	</div>
+	</div>
+	<div class="body">
+        {% block body %}
+	{% endblock %}
+	</div>
+	</div>
+	
+    </body>
+	<footer>{% block footer %}{% endblock %}</footer>
+</html>

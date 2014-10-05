@@ -1,0 +1,27 @@
+{% extends '::base.html.twig' %}
+{% block title %}Contact owner{% endblock %}
+{% block body %}
+	<div class="contact_form">
+		<form method="post" action="{{ asset('email.php') }}">
+		<div class="single_form">
+				<label> Name </label>
+				<input type="text" placeholder="Name" name="name">
+				<label> Email </label>				
+				<input  type="text" placeholder="Email" name="email">
+				<label> Subject </label>
+				<input  type="text" placeholder="Subject" name="subject">
+		</div>
+		<div class="message">
+				<label> Message </label>
+				<textarea name="message" placeholder="Message" id="Message"></textarea>
+				<input class="submit" type="submit" value="Send Message" name="submit">
+		</div>
+		</form>	
+			
+	</div>
+
+{% endblock %}
+{% block footer %}<a href="{{ path('nenad_test_homepage') }}">Return to Homepage</a>{% endblock %}
+
+
+
