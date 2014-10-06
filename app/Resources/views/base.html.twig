@@ -6,27 +6,26 @@
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-	<link rel="stylesheet" type="text/css" href="{{ asset('bundles/nenadtest/css/layout.css') }}" />
-	 {% stylesheets 'bundles/nenadtest/css/*' filter='cssrewrite' %}
+	    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/nenadtest/css/layout.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/nenadtest/css/bjqs.css') }}" />
+	{# {% stylesheets 'bundles/nenadtest/css/*' filter='cssrewrite' %}
         <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}" />
  	{% endstylesheets %}
- 
+ #}
 	{% block javascripts %}{% endblock %}
 	
     </head>
-    <body>{% if error %}
-    <div>{{ error.message }}</div>
-{% endif %}
+    <body>
 	<div class="wrapper">
 	<div class="header">
 	<div id="innerheader">
 		<div class="header_l">
-		<a href="{{ path('nenad_test_homepage') }}">zephyr</a>
+		<a href="{{ path('nenad_homepage') }}">zephyr</a>
 	 	</div>
 		
 		<div class="header_r">
 
-			<form action="{{ path('login_check') }}" method="post">
+			<form action="{{ path("login") }}" method="post">
 				
 				
 				<table cellspacing="0">
@@ -40,7 +39,7 @@
    				</tr>
 				<tr>
 					<td>
-					<input id="username" type="text" name="username" class="log" value="{{ last_username }}"/>
+					<input id="username" type="text" name="username" class="log"/>
 					</td>
 					<td>
 					<input id="password" type="password" name="password" class="log"/>

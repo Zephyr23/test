@@ -13,14 +13,3 @@ _configurator:
 _main:
     resource: routing.yml
 
-login:
-    pattern:   /login
-    defaults:  { _controller: NenadTestBundle:Secured:login }
-login_check:
-    pattern:   /login_check
-
-test_security:
-    pattern: /secured_area
-    defaults: {_controller: SimpleProfileBundle:Secured:hello }
-logout:
-    path:     /logout

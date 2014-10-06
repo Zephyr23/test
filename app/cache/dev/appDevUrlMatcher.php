@@ -161,98 +161,46 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        if (0 === strpos($pathinfo, '/h')) {
-            if (0 === strpos($pathinfo, '/homepage')) {
-                // nenad_test_homepage
-                if ($pathinfo === '/homepage') {
-                    return array (  '_controller' => 'Nenad\\TestBundle\\Controller\\DefaultController::indexAction',  '_route' => 'nenad_test_homepage',);
-                }
-
-                // nenad_test_email
-                if ($pathinfo === '/homepage/email') {
-                    return array (  '_controller' => 'Nenad\\TestBundle\\Controller\\DefaultController::emailAction',  '_route' => 'nenad_test_email',);
-                }
-
+        if (0 === strpos($pathinfo, '/homepage/email')) {
+            // nenad_test_email
+            if ($pathinfo === '/homepage/email') {
+                return array (  '_controller' => 'Nenad\\TestBundle\\Controller\\DefaultController::emailAction',  '_route' => 'nenad_test_email',);
             }
 
-            // zephyr_test_default_index
-            if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'zephyr_test_default_index')), array (  '_controller' => 'Zephyr\\TestBundle\\Controller\\DefaultController::indexAction',));
+            // nenad_email_post
+            if ($pathinfo === '/homepage/email/post') {
+                return array (  '_controller' => 'Nenad\\TestBundle\\Controller\\DefaultController::emailpostAction',  '_route' => 'nenad_email_post',);
             }
 
         }
 
-        // _welcome
+        // nenad_homepage
         if (rtrim($pathinfo, '/') === '') {
             if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', '_welcome');
+                return $this->redirect($pathinfo.'/', 'nenad_homepage');
             }
 
-            return array (  '_controller' => 'Acme\\DemoBundle\\Controller\\WelcomeController::indexAction',  '_route' => '_welcome',);
+            return array (  '_controller' => 'Nenad\\TestBundle\\Controller\\DefaultController::indexAction',  '_route' => 'nenad_homepage',);
         }
 
-        if (0 === strpos($pathinfo, '/demo')) {
-            if (0 === strpos($pathinfo, '/demo/secured')) {
-                if (0 === strpos($pathinfo, '/demo/secured/log')) {
-                    if (0 === strpos($pathinfo, '/demo/secured/login')) {
-                        // _demo_login
-                        if ($pathinfo === '/demo/secured/login') {
-                            return array (  '_controller' => 'Acme\\DemoBundle\\Controller\\SecuredController::loginAction',  '_route' => '_demo_login',);
-                        }
+        // login
+        if ($pathinfo === '/login') {
+            return array (  '_controller' => 'NenadTestBundle:Secured:login',  '_route' => 'login',);
+        }
 
-                        // _demo_security_check
-                        if ($pathinfo === '/demo/secured/login_check') {
-                            return array (  '_controller' => 'Acme\\DemoBundle\\Controller\\SecuredController::securityCheckAction',  '_route' => '_demo_security_check',);
-                        }
+        // zephyr_test_default_index
+        if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'zephyr_test_default_index')), array (  '_controller' => 'Zephyr\\TestBundle\\Controller\\DefaultController::indexAction',));
+        }
 
-                    }
+        // test_security
+        if ($pathinfo === '/secured_area') {
+            return array (  '_controller' => 'SimpleProfileBundle:Secured:hello',  '_route' => 'test_security',);
+        }
 
-                    // _demo_logout
-                    if ($pathinfo === '/demo/secured/logout') {
-                        return array (  '_controller' => 'Acme\\DemoBundle\\Controller\\SecuredController::logoutAction',  '_route' => '_demo_logout',);
-                    }
-
-                }
-
-                if (0 === strpos($pathinfo, '/demo/secured/hello')) {
-                    // acme_demo_secured_hello
-                    if ($pathinfo === '/demo/secured/hello') {
-                        return array (  'name' => 'World',  '_controller' => 'Acme\\DemoBundle\\Controller\\SecuredController::helloAction',  '_route' => 'acme_demo_secured_hello',);
-                    }
-
-                    // _demo_secured_hello
-                    if (preg_match('#^/demo/secured/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => '_demo_secured_hello')), array (  '_controller' => 'Acme\\DemoBundle\\Controller\\SecuredController::helloAction',));
-                    }
-
-                    // _demo_secured_hello_admin
-                    if (0 === strpos($pathinfo, '/demo/secured/hello/admin') && preg_match('#^/demo/secured/hello/admin/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => '_demo_secured_hello_admin')), array (  '_controller' => 'Acme\\DemoBundle\\Controller\\SecuredController::helloadminAction',));
-                    }
-
-                }
-
-            }
-
-            // _demo
-            if (rtrim($pathinfo, '/') === '/demo') {
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', '_demo');
-                }
-
-                return array (  '_controller' => 'Acme\\DemoBundle\\Controller\\DemoController::indexAction',  '_route' => '_demo',);
-            }
-
-            // _demo_hello
-            if (0 === strpos($pathinfo, '/demo/hello') && preg_match('#^/demo/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => '_demo_hello')), array (  '_controller' => 'Acme\\DemoBundle\\Controller\\DemoController::helloAction',));
-            }
-
-            // _demo_contact
-            if ($pathinfo === '/demo/contact') {
-                return array (  '_controller' => 'Acme\\DemoBundle\\Controller\\DemoController::contactAction',  '_route' => '_demo_contact',);
-            }
-
+        // logout
+        if ($pathinfo === '/logout') {
+            return array('_route' => 'logout');
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();

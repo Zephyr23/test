@@ -6,10 +6,10 @@ parameters:
     database_name: first_database
     database_user: root
     database_password: nenad
-    mailer_transport: smtp
-    mailer_host: 127.0.0.1
-    mailer_user: null
-    mailer_password: null
+    mailer_transport: gmail
+    mailer_host: null
+    mailer_user: nenad_992
+    mailer_password: mojpass
     locale: en
     secret: b3330d14b25a5f032b1c8185af4872625e2c303a
     debug_toolbar: true

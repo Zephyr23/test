@@ -15,6 +15,11 @@ class DefaultController extends Controller
 	{
 	    return $this->render('NenadTestBundle:Default:email.html.twig');
 	}
+
+    public function emailpostAction()
+    {
+        die('postovao sam i poslao na mail');
+    }
 	
 }
 
