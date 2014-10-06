@@ -2,9 +2,9 @@
 <!DOCTYPE html>
 <html>
     <head>
+
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <link href="{{ asset('email.php') }}"/>
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 	<link rel="stylesheet" type="text/css" href="{{ asset('bundles/nenadtest/css/layout.css') }}" />
 	 {% stylesheets 'bundles/nenadtest/css/*' filter='cssrewrite' %}
@@ -14,7 +14,9 @@
 	{% block javascripts %}{% endblock %}
 	
     </head>
-    <body>
+    <body>{% if error %}
+    <div>{{ error.message }}</div>
+{% endif %}
 	<div class="wrapper">
 	<div class="header">
 	<div id="innerheader">
@@ -24,7 +26,7 @@
 		
 		<div class="header_r">
 
-			<form action="" method="post">
+			<form action="{{ path('nenad_test_secured') }}" method="post">
 				
 				
 				<table cellspacing="0">

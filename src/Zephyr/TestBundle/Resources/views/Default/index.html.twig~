@@ -1,7 +1,0 @@
-<html>
-
-<h1 style="color:red;text-align:center"> Hello {{ name }}! </h1>
-<input type="button" value="klik" onclick="html()"></input>
-{{name}}
-
-</html>
