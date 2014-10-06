@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html>
     <head>
+
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <link href="{{ asset('email.php') }}"/>
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 	<link rel="stylesheet" type="text/css" href="{{ asset('bundles/nenadtest/css/layout.css') }}" />
 	 {% stylesheets 'bundles/nenadtest/css/*' filter='cssrewrite' %}
@@ -13,7 +14,9 @@
 	{% block javascripts %}{% endblock %}
 	
     </head>
-    <body>
+    <body>{% if error %}
+    <div>{{ error.message }}</div>
+{% endif %}
 	<div class="wrapper">
 	<div class="header">
 	<div id="innerheader">
@@ -23,24 +26,24 @@
 		
 		<div class="header_r">
 
-			<form action="" method="post">
+			<form action="{{ path('login_check') }}" method="post">
 				
 				
 				<table cellspacing="0">
 				<tr >
 					<td class="txt">
-					<label>Username</label>  
+					<label for="username">Username</label>
 					</td>
 					<td class="txt">
-					<label>Password</label>
+					<label for="password">Password</label>
 					</td>
    				</tr>
 				<tr>
 					<td>
-					<input type="text" name="email" class="log">
+					<input id="username" type="text" name="username" class="log" value="{{ last_username }}"/>
 					</td>
 					<td>
-					<input  type="password" name="password" class="log">
+					<input id="password" type="password" name="password" class="log"/>
 					</td>
 					<td>
 					<input type="submit" id="login" value="Log in" name="login">

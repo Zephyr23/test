@@ -1,36 +1,40 @@
 <?php
 
-namespace Acme\DemoBundle\Controller;
-
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Core\SecurityContext;
+namespace Nenad\TestBundle\SecuredController;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Symfony\Component\Security\Core\SecurityContext;
 
-/**
- * @Route("/demo/secured")
- */
+
 class SecuredController extends Controller
 {
-    /**
-     * @Route("/login", name="_demo_login")
-     * @Template()
-     */
-    public function loginAction(Request $request)
+    public function loginAction()
     {
+        $request = $this->getRequest();
+        $session = $request->getSession();
+
+        // get the login error if there is one
         if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
-            $error = $request->attributes->get(SecurityContext::AUTHENTICATION_ERROR);
+            $error = $request->attributes->get(
+                SecurityContext::AUTHENTICATION_ERROR
+            );
         } else {
-            $error = $request->getSession()->get(SecurityContext::AUTHENTICATION_ERROR);
+            $error = $session->get(SecurityContext::AUTHENTICATION_ERROR);
+            $session->remove(SecurityContext::AUTHENTICATION_ERROR);
         }
 
-        return array(
-            'last_username' => $request->getSession()->get(SecurityContext::LAST_USERNAME),
-            'error'         => $error,
+        return $this->render(
+            'NenadTestBundle:Secured:index.html.twig',
+            array(
+                // last username entered by the user
+                'last_username' => $session->get(SecurityContext::LAST_USERNAME),
+                'error'         => $error,
+            )
         );
     }
 
-   
+    public function helloAction()
+    {
+      return $this->render('NenadTestBundle:Secured:hello.html.twig', array());
+    }
 }
+?>

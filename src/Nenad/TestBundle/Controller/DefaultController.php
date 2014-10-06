@@ -14,9 +14,8 @@ class DefaultController extends Controller
 	public function emailAction()
 	{
 	    return $this->render('NenadTestBundle:Default:email.html.twig');
-	    return $this->render('NenadTestBundle:Default:email.php');
 	}
 	
 }
 
-
+?>
