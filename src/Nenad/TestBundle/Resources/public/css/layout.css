@@ -162,7 +162,6 @@ float:right;
 }
 .single_form{
 padding:10px;
-float:left;
 width:400px;
 margin:0 auto;
 display:block;
@@ -194,7 +193,7 @@ float:right;
 }
 .single_form>label, .message>label{
 padding:3px;
-float:left;
+
 width:400px;
 color:white;
 font: bold 12px Calibri, Helvetica, Arial, sans-serif;
@@ -212,7 +211,8 @@ padding:30px;
 
 #banner-fade,
 #banner-slide{
-	margin-bottom: 60px;
+    margin:0 auto;
+    margin-top: 60px;
 }
 ul.bjqs-controls.v-centered li a{
 	display:block;
@@ -220,6 +220,7 @@ ul.bjqs-controls.v-centered li a{
 	background:#fff;
 	color:#000;
 	text-decoration: none;
+    border-radius: 25px;
 }
 
 ul.bjqs-controls.v-centered li a:hover{

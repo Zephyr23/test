@@ -1,13 +1,11 @@
 {% extends "::base.html.twig" %}
 
-{% block title "Hello " %}
-
 {% block body %}
-    <h1 class="title">Hello!</h1>
-<div>
-    <a href="{{path('logout')}}">Logout</a>
-</div>
-    
+    <div class="contact_form">
+    <h1 class="txt" style="color: floralwhite; text-align: center; padding: 30px;margin-bottom: 50px;">Hello {{ app.user.username }}!</h1>
+<div style="text-align: center; margin-top: 90px; padding: 20px">
+    <a  href="{{path('logout')}}" ><input type="submit" id="login" value="Logout" name="login"></a>
+    </div>
+        </div>
 {% endblock %}
 
-{% set code = code(_self) %}

@@ -161,46 +161,40 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        if (0 === strpos($pathinfo, '/homepage/email')) {
-            // nenad_test_email
-            if ($pathinfo === '/homepage/email') {
-                return array (  '_controller' => 'Nenad\\TestBundle\\Controller\\DefaultController::emailAction',  '_route' => 'nenad_test_email',);
+        // emaillogin
+        if ($pathinfo === '/email/login') {
+            if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                goto not_emaillogin;
             }
 
-            // nenad_email_post
-            if ($pathinfo === '/homepage/email/post') {
-                return array (  '_controller' => 'Nenad\\TestBundle\\Controller\\DefaultController::emailpostAction',  '_route' => 'nenad_email_post',);
-            }
+            return array (  '_controller' => 'Nenad\\TestBundle\\Controller\\SecuredController::loginAction',  '_route' => 'emaillogin',);
+        }
+        not_emaillogin:
 
+        // homepagelogin
+        if ($pathinfo === '/homepage/login') {
+            return array (  '_controller' => 'Nenad\\TestBundle\\Controller\\SecuredController::loginAction',  '_route' => 'homepagelogin',);
         }
 
-        // nenad_homepage
-        if (rtrim($pathinfo, '/') === '') {
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'nenad_homepage');
-            }
-
-            return array (  '_controller' => 'Nenad\\TestBundle\\Controller\\DefaultController::indexAction',  '_route' => 'nenad_homepage',);
-        }
-
-        // login
-        if ($pathinfo === '/login') {
-            return array (  '_controller' => 'NenadTestBundle:Secured:login',  '_route' => 'login',);
-        }
-
-        // zephyr_test_default_index
-        if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'zephyr_test_default_index')), array (  '_controller' => 'Zephyr\\TestBundle\\Controller\\DefaultController::indexAction',));
+        // login_check
+        if ($pathinfo === '/login_check') {
+            return array('_route' => 'login_check');
         }
 
         // test_security
-        if ($pathinfo === '/secured_area') {
-            return array (  '_controller' => 'SimpleProfileBundle:Secured:hello',  '_route' => 'test_security',);
+        if ($pathinfo === '/secure_area') {
+            return array (  '_controller' => 'Nenad\\TestBundle\\Controller\\SecuredController::helloAction',  '_route' => 'test_security',);
         }
 
         // logout
         if ($pathinfo === '/logout') {
             return array('_route' => 'logout');
+        }
+
+        // nenad_send
+        if ($pathinfo === '/email/sent') {
+            return array (  '_controller' => 'Nenad\\TestBundle\\Controller\\SecuredController::contactAction',  '_route' => 'nenad_send',);
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();

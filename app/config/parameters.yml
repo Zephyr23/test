@@ -7,9 +7,9 @@ parameters:
     database_user: root
     database_password: nenad
     mailer_transport: gmail
-    mailer_host: null
-    mailer_user: nenad_992
-    mailer_password: mojpass
+    mailer_host: smtp.gmail.com
+    mailer_user: symfony123
+    mailer_password:
     locale: en
     secret: b3330d14b25a5f032b1c8185af4872625e2c303a
     debug_toolbar: true

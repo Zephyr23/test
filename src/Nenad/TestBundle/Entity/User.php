@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @ORM\Table(name="simple_users")
+ * @ORM\Table(name="login_users")
  * @ORM\Entity(repositoryClass="Nenad\TestBundle\Entity\UserRepository")
  */
 class User implements UserInterface, \Serializable

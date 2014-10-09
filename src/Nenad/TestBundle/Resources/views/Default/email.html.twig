@@ -1,25 +1,38 @@
 {% extends '::base.html.twig' %}
 {% block title %}Contact owner{% endblock %}
 {% block body %}
-	<div class="contact_form">
-		<form method="post" action="{{ path('nenad_email_post') }}">
-		<div class="single_form">
-				<label> Name </label>
-				<input type="text" placeholder="Name" name="name">
-				<label> Email </label>				
-				<input  type="text" placeholder="Email" name="email">
-				<label> Subject </label>
-				<input  type="text" placeholder="Subject" name="subject">
-		</div>
-		<div class="message">
-				<label> Message </label>
-				<textarea name="message" placeholder="Message" id="Message"></textarea>
-				<input class="submit" type="submit" value="Send Message" name="submit">
-		</div>
-		</form>	
-    <div style="clear: both"></div>
-	</div>
+    <div class="contact_form">
+        {{ form_start(form) }}
 
+                <div style="width: 350px; float:left; padding: 10px;">
+                {{ form_row(form.name,{ 'attr': {'class': 'single_form'} }) }}
+                {{ form_row(form.email,{ 'attr': {'class': 'single_form'} }) }}
+                {{ form_row(form.subject,{ 'attr': {'class': 'single_form'} } ) }}
+        </div>
+        <div class="message">
+        {{ form_row(form.message,{ 'attr': {'class': 'textarea'} } ) }}
+        {{ form_row(form.send,{ 'attr': {'class': 'submit'} } ) }}
+        </div>
+        <div style="clear: both"></div>
+        {{ form_end(form) }}
+
+
+          <!--  <div class="single_form">
+                <label> Name </label>
+                <input type="text" placeholder="Name" name="name">
+                <label> Email </label>
+                <input  type="text" placeholder="Email" name="email">
+                <label> Subject </label>
+                <input  type="text" placeholder="Subject" name="subject">
+            </div>
+            <div class="message">
+                <label> Message </label>
+                <textarea name="message" placeholder="Message" id="Message"></textarea>
+                <input class="submit" type="submit" value="Send Message" name="submit">
+            </div>
+
+		</form>-->
+    </div>
 {% endblock %}
 {% block footer %}<a href="{{ path('nenad_homepage') }}">Return to Homepage</a>{% endblock %}
 

@@ -1,21 +1,24 @@
-#nenad_test_homepage:
- #   path:     /homepage
-  #  defaults: { _controller: NenadTestBundle:Default:index }
 
-nenad_test_email:
-    path:     /homepage/email
-    defaults: { _controller: NenadTestBundle:Default:email }
+emaillogin:
+    path: /email/login
+    defaults: { _controller: NenadTestBundle:Secured:login}
+    requirements:
+            _method:  GET|POST
 
-nenad_email_post:
-    path: /homepage/email/post
-    defaults: { _controller: NenadTestBundle:Default:emailpost}
-
-nenad_homepage:
-  path: /
-  defaults: { _controller: NenadTestBundle:Default:index }
-#
-login:
-    pattern:   /login
+homepagelogin:
+    pattern:   /homepage/login
     defaults:  { _controller: NenadTestBundle:Secured:login }
-#login_check:
-#    pattern:   /login_check
+
+login_check:
+    pattern:   /login_check
+
+test_security:
+    pattern:   /secure_area
+    defaults:  {_controller: NenadTestBundle:Secured:hello }
+
+logout:
+    path:      /logout
+
+nenad_send:
+    path:      /email/sent
+    defaults:  { _controller: NenadTestBundle:Secured:contact }

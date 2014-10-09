@@ -4,3 +4,4 @@ web/bundles
 
 app/cache
 web/css
+app/config/parameters.yml

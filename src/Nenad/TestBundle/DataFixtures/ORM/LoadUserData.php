@@ -1,6 +1,5 @@
 <?php
 namespace Nenad\TestBundle\DataFixtures\ORM;
-
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
@@ -29,15 +28,17 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
      */
     public function load(ObjectManager $manager)
     {
-      $user = new User();
-      $user->setUsername("someuser");
-      $user->setSalt(md5(uniqid()));
-      $encoder = $this->container->get('security.encoder_factory')->getEncoder($user);
-      $user->setPassword($encoder->encodePassword('blue', $user->getSalt()));
-      $user->setEmail("someuser@mail.ca");
+        $user = new User();
+        $user->setUsername("drasko");
+        $user->setSalt(md5(uniqid()));
+        $encoder = $this->container->get('security.encoder_factory')->getEncoder($user);
+        $user->setPassword($encoder->encodePassword('nenad', $user->getSalt()));
+        $user->setEmail("drasko@mail.ca");
 
-      $manager->persist($user);
+        $manager->persist($user);
 
-      $manager->flush();
+        $manager->flush();
     }
+
+
 }

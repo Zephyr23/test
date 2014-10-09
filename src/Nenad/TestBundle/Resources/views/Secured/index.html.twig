@@ -16,10 +16,41 @@
       	</script>
 	
 	{% endblock %}
+{% block login %}
+    <form action="{{ path("login_check") }}" method="post">
 
+
+        <table cellspacing="0">
+            <tr >
+                <td class="txt">
+                    <label for="username">Username</label>
+                </td>
+                <td class="txt">
+                    <label for="password">Password</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input id="username" type="text" class="log" name="_username" value="{{ last_username }}" />
+
+                </td>
+                <td>
+                    <input id="password" type="password" name="_password" class="log"/>
+                </td>
+                <td>
+                    <input type="submit" id="login" value="Log in" name="login">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+{% endblock %}
 
 {% block body %}
-
+    {% if error %}
+        <div>{{ error.message }}</div>
+    {% endif %}
+<div>{{ url }}</div>
 <div id="container">
   
       <div id="banner-fade">
@@ -41,7 +72,7 @@
     </div>
  
 {% endblock %}
-{% block footer %}<a href="{{ path('nenad_test_email') }}">Contact owner</a>{% endblock %}
+{% block footer %}<a href="{{ path('emaillogin') }}">Contact owner</a>{% endblock %}
 
 
 
